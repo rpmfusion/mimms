@@ -3,7 +3,7 @@
 Summary: MMS stream downloader
 Name: mimms
 Version: 3.2.1
-Release: 2%{?dist}
+Release: 2%{?dist}.1
 License: GPLv3+
 Group: Applications/Multimedia
 URL: http://savannah.nongnu.org/projects/mimms/
@@ -40,12 +40,15 @@ protocol and save them to your computer, as opposed to watching them live.
 %defattr(-,root,root,-)
 %doc AUTHORS COPYING NEWS README
 %{_bindir}/mimms
-%{python_sitelib}/mimms-*.egg-info
+#{python_sitelib}/mimms-*.egg-info
 %{python_sitelib}/libmimms/
 %{_mandir}/man1/mimms.1*
 
 
 %changelog
+* Sat Oct 18 2008 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info - 3.2.1-2.1
+- no egg-info files on F8
+
 * Sat Oct 18 2008 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info - 3.2.1-2
 - rebuild for RPM Fusion
 
