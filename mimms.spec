@@ -3,7 +3,7 @@
 Summary: MMS stream downloader
 Name: mimms
 Version: 3.2.1
-Release: 5%{?dist}
+Release: 6%{?dist}
 License: GPLv3+
 Group: Applications/Multimedia
 URL: http://savannah.nongnu.org/projects/mimms/
@@ -46,6 +46,9 @@ protocol and save them to your computer, as opposed to watching them live.
 
 
 %changelog
+* Tue Jan 25 2011 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info> - 3.2.1-6
+- rebuilt
+
 * Mon Jan 24 2011 Nicolas Chauvet <kwizart@gmail.com> - 3.2.1-5
 - Rebuilt for python
 
