@@ -1,7 +1,7 @@
 Summary: MMS stream downloader
 Name:    mimms
 Version: 3.2.1
-Release: 20%{?dist}
+Release: 21%{?dist}
 License: GPLv3+
 Group:   Applications/Multimedia
 URL:     http://savannah.nongnu.org/projects/mimms/
@@ -32,6 +32,9 @@ protocol and save them to your computer, as opposed to watching them live.
 %{_mandir}/man1/mimms.1*
 
 %changelog
+* Wed Feb 09 2022 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 3.2.1-21
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
 * Tue Aug 03 2021 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 3.2.1-20
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
 
