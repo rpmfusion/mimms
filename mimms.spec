@@ -1,12 +1,14 @@
 Summary: MMS stream downloader
 Name:    mimms
 Version: 3.2.1
-Release: 25%{?dist}
+Release: 26%{?dist}
 License: GPLv3+
 Group:   Applications/Multimedia
 URL:     http://savannah.nongnu.org/projects/mimms/
 Source:  http://download.savannah.gnu.org/releases/mimms/mimms-%{version}.tar.bz2
-BuildRequires: python2-devel
+Patch0:  convert_to_py3.patch
+BuildRequires: python3-devel
+BuildRequires: python3-setuptools
 Requires:  libmms >= 0.4
 BuildArch: noarch
 
@@ -15,23 +17,26 @@ mimms is a program designed to allow you to download streams using the MMS
 protocol and save them to your computer, as opposed to watching them live.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%py2_build
+%py3_build
 
 %install
-%py2_install
+%py3_install
 
 %files
 %doc AUTHORS NEWS README
 %license COPYING
 %{_bindir}/mimms
-%{python2_sitelib}/mimms-*.egg-info
-%{python2_sitelib}/libmimms/
+%{python3_sitelib}/mimms-*.egg-info
+%{python3_sitelib}/libmimms/
 %{_mandir}/man1/mimms.1*
 
 %changelog
+* Sun Sep 01 2024 Leigh Scott <leigh123linux@gmail.com> - 3.2.1-26
+- Patch to use python3
+
 * Fri Aug 02 2024 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 3.2.1-25
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
 

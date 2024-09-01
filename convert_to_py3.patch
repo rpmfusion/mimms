@@ -1,0 +1,79 @@
+diff -uNrp a/libmimms/core.py b/libmimms/core.py
+--- a/libmimms/core.py	2008-05-12 01:53:08.000000000 +0100
++++ b/libmimms/core.py	2024-09-01 17:06:28.465911780 +0100
+@@ -26,7 +26,7 @@ import sys
+ 
+ from optparse import OptionParser
+ from time import time
+-from urlparse import urlparse
++from urllib.parse import urlparse
+ 
+ from . import libmms
+ 
+@@ -99,7 +99,7 @@ def download(options):
+   "Using the given options, download the stream to a file."
+ 
+   status = "Connecting ..."
+-  if not options.quiet: print status,
++  if not options.quiet: print(status, end=' ')
+   sys.stdout.flush()  
+ 
+   stream = libmms.Stream(options.url, options.bandwidth)
+@@ -117,7 +117,7 @@ def download(options):
+ 
+   clear = " " * len(status)
+   status = "%s => %s" % (options.url, filename)
+-  if not options.quiet: print "\r", clear, "\r", status
++  if not options.quiet: print("\r", clear, "\r", status)
+   sys.stdout.flush()  
+ 
+   timeout_timer  = Timer()
+@@ -171,7 +171,7 @@ def download(options):
+         seconds_to_string(remaining)
+         )
+ 
+-      if not options.quiet: print "\r", clear, "\r", status,
++      if not options.quiet: print("\r", clear, "\r", status, end=' ')
+       sys.stdout.flush()
+ 
+       if options.time and timeout_timer.elapsed() > (options.time*60):
+@@ -231,19 +231,20 @@ def run(argv):
+     download(options)
+   except Timeout:
+     if not options.quiet:
+-      print
+-      print "Download stopped after user-specified timeout."
++      print()
++      print("Download stopped after user-specified timeout.")
+   except NotResumeableError:
+     if not options.quiet:
+-      print
+-    print >> sys.stderr, "Non-seekable streams cannot be resumed."
++      print()
++    print("Non-seekable streams cannot be resumed.", file=sys.stderr)
+   except KeyboardInterrupt:
+     if not options.quiet:
+-      print
+-    print >> sys.stderr, "Download aborted by user."
+-  except libmms.Error, e:
+-    print >> sys.stderr, "libmms error:", e.message
++      print()
++    print("Download aborted by user.", file=sys.stderr)
++  except libmms.Error as e:
++    print("libmms error:", e.message, file=sys.stderr)
+   else:
+     if not options.quiet:
+-      print
+-      print "Download complete!"
++      print()
++      print("Download complete!")
++
+diff -uNrp a/mimms b/mimms
+--- a/mimms	2008-05-12 01:53:08.000000000 +0100
++++ b/mimms	2024-09-01 17:10:20.195006924 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python2.5
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #
+ # mimms - mms stream downloader
